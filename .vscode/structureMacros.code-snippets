@@ -1,0 +1,35 @@
+{
+	"IF EQUALS": {
+		"scope": "dasm",
+		"prefix": "IF_EQ",
+		"body": [
+			"IF_EQ",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
+	},
+	"IF ZERO": {
+		"scope": "dasm",
+		"prefix": "IF_ZERO",
+		"body": [
+			"IF_ZERO",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
+	},
+	"IF NOT EQUALS": {
+		"scope": "dasm",
+		"prefix": "IF_NEQ",
+		"body": [
+			"IF_NEQ",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
+	},
+}
