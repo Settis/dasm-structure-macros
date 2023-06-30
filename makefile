@@ -1,13 +1,22 @@
-test: assemble compare
+test: assemble compareAll
 
-assemble: 
-	$(MAKE) -C test/without
-	$(MAKE) -C test/with
+ASM_WITH_FILES := $(wildcard test/with/*.asm)
+ASM_WITHOUT_FILES := $(wildcard test/without/*.asm)
+OUT_WITH_FILES := $(patsubst %.asm, %.out, $(ASM_WITH_FILES))
+OUT_WITHOUT_FILES := $(patsubst %.asm, %.out, $(ASM_WITHOUT_FILES))
+CPM := $(patsubst test/with/%.out, test/%.cmp, $(OUT_WITH_FILES))
 
-compare:
-	$(MAKE) -C test/with checkDiff
-	@echo "All is good!"
+%.out: %.asm
+	dasm $< -Ilib -o$@
+
+assemble: $(OUT_WITH_FILES) $(OUT_WITHOUT_FILES)
+
+compareAll: $(CPM)
+
+test/%.cmp: test/with/%.out test/without/%.out
+	diff $^ > $@
 
 clean:
 	$(RM) test/with/*.out
 	$(RM) test/without/*.out
+	$(RM) test/*.cmp
