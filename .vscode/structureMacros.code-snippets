@@ -53,5 +53,16 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF MINUS": {
+		"scope": "dasm",
+		"prefix": "IF_MINUS",
+		"body": [
+			"IF_MINUS",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }
