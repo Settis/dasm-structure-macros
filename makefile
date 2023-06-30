@@ -14,7 +14,7 @@ assemble: $(OUT_WITH_FILES) $(OUT_WITHOUT_FILES)
 compareAll: $(CPM)
 
 test/%.cmp: test/with/%.out test/without/%.out
-	diff $^ > $@
+	diff $^ && echo "OK" > $@
 
 clean:
 	$(RM) test/with/*.out

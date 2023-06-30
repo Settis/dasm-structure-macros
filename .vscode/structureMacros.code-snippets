@@ -32,4 +32,15 @@
 			"END_IF"
 		]
 	},
+	"IF NOT ZERO": {
+		"scope": "dasm",
+		"prefix": "IF_NOT_ZERO",
+		"body": [
+			"IF_NOT_ZERO",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
+	}
 }
