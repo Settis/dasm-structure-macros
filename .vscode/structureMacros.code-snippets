@@ -119,5 +119,16 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF OVERFLOW CLEAR": {
+		"scope": "dasm",
+		"prefix": "IF_V_CLR",
+		"body": [
+			"IF_V_CLR",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }
