@@ -103,3 +103,7 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
     MACRO IF_GE
     IF_C_SET
     ENDM
+
+    MACRO IF_LT
+    IF_C_CLR
+    ENDM

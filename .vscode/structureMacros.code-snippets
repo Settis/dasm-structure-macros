@@ -97,5 +97,16 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF LESS THEN": {
+		"scope": "dasm",
+		"prefix": "IF_LT",
+		"body": [
+			"IF_LT",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }
