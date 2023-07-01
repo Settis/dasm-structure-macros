@@ -64,5 +64,16 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF NEGATIVE": {
+		"scope": "dasm",
+		"prefix": "IF_NEG",
+		"body": [
+			"IF_NEG",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }
