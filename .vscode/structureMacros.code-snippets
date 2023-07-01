@@ -75,5 +75,16 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF CARRY IS SET": {
+		"scope": "dasm",
+		"prefix": "IF_C_SET",
+		"body": [
+			"IF_C_SET",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }
