@@ -108,5 +108,16 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF OVERFLOW SET": {
+		"scope": "dasm",
+		"prefix": "IF_V_SET",
+		"body": [
+			"IF_V_SET",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }
