@@ -130,5 +130,16 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF FLAG (bit 7)": {
+		"scope": "dasm",
+		"prefix": "IF_FLAG_VAR",
+		"body": [
+			"IF_FLAG_VAR ${1:FLAG}, ${2|IS_SET,IS_CLEAR|}",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }

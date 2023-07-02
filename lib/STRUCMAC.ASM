@@ -23,103 +23,139 @@ _STK_LVL_20 SET 0
 
 _STRUC_MAC_I SET 1
 
+; Arguments
+IS_SET   = 1
+IS_CLEAR = 2
 
 ;                         +--------------------------+
 ;                         |  IF_xx...ELSE_...END_IF  |
 ;                         +==========================+
     MACRO IF_EQ
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BNE _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BNE .tmp
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPUSH.ASM"
     ENDM
+ ;----------------
 
     MACRO ELSE_
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    JMP _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    JMP .tmp
 _STRUCT_MAC_LABEL_,_STK_LVL_1
 _STK_LVL_1 SET _STRUC_MAC_I
     ENDM
+ ;----------------
 
     MACRO END_IF
 _STRUCT_MAC_LABEL_,_STK_LVL_1
     INCLUDE "STACKPOP.ASM"
     ENDM
+ ;----------------
 
     MACRO IF_ZERO
     IF_EQ
     ENDM
+ ;----------------
 
     MACRO IF_NEQ
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BEQ _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BEQ .tmp
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPUSH.ASM"
     ENDM
+ ;----------------
 
     MACRO IF_NOT_ZERO
     IF_NEQ
     ENDM
+ ;----------------
 
     MACRO IF_PLUS
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BMI _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BMI .tmp
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPUSH.ASM"
     ENDM
+ ;----------------
 
     MACRO IF_MINUS
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BPL _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BPL .tmp
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPUSH.ASM"
     ENDM
+ ;----------------
 
     MACRO IF_NEG
     IF_MINUS
     ENDM
+ ;----------------
 
     MACRO IF_C_SET
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BCC _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BCC .tmp
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPUSH.ASM"
     ENDM
+ ;----------------
 
     MACRO IF_C_CLR
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BCS _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BCS .tmp
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPUSH.ASM"
     ENDM
+ ;----------------
 
     MACRO IF_GE
     IF_C_SET
     ENDM
+ ;----------------
 
     MACRO IF_LT
     IF_C_CLR
     ENDM
+ ;----------------
 
     MACRO IF_V_SET
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BVC _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BVC .tmp
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPUSH.ASM"
     ENDM
+ ;----------------
 
     MACRO IF_V_CLR
-_TMP set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BVS _TMP
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BVS .tmp
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPUSH.ASM"
     ENDM
+ ;----------------
+
+    MACRO IF_FLAG_VAR
+    IF ![{2} == IS_SET || {2} == IS_CLEAR ]
+        ECHO "Confition must be: IS_SET or IS_CLEAR"
+        ERR
+    ENDIF
+    BIT {1}
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    IF {2} == IS_SET
+        BPL .tmp
+    ELSE
+        BMI .tmp
+    ENDIF
+_TO_PUSH_1 SET _STRUC_MAC_I
+_STRUC_MAC_I SET _STRUC_MAC_I + 1
+    INCLUDE "STACKPUSH.ASM"
+    ENDM
+ ;----------------
