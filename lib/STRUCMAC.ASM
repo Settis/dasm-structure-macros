@@ -26,6 +26,8 @@ _STRUC_MAC_I SET 1
 ; Arguments
 IS_SET   = 1
 IS_CLEAR = 2
+IS_HIGH  = 3
+IS_LOW   = 4
 
 ;                         +--------------------------+
 ;                         |  IF_xx...ELSE_...END_IF  |
@@ -143,8 +145,8 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
  ;----------------
 
     MACRO IF_FLAG_VAR
-    IF ![{2} == IS_SET || {2} == IS_CLEAR ]
-        ECHO "Confition must be: IS_SET or IS_CLEAR"
+    IF ![ {2} == IS_SET || {2} == IS_CLEAR ]
+        ECHO "Condition must be: IS_SET or IS_CLEAR"
         ERR
     ENDIF
     BIT {1}
@@ -153,6 +155,46 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
         BPL .tmp
     ELSE
         BMI .tmp
+    ENDIF
+_TO_PUSH_1 SET _STRUC_MAC_I
+_STRUC_MAC_I SET _STRUC_MAC_I + 1
+    INCLUDE "STACKPUSH.ASM"
+    ENDM
+ ;----------------
+
+    MACRO IF_BIT
+    IF [ {2} < 0 || {2} > 7 ]
+        ECHO "BIT_NR must be from 0 to 7"
+        ERR
+    ENDIF
+    IF ![ {3} == IS_HIGH || {3} == IS_LOW ]
+        ECHO "Condition must be: IS_HIGH or IS_LOW"
+        ERR
+    ENDIF
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    IF [ {2} < 6 ]
+        LDA #[1 << {2}]
+        BIT {1}
+        IF [ {3} == IS_HIGH ]
+            BEQ .tmp
+        ELSE
+            BNE .tmp
+        ENDIF
+    ELSE
+        BIT {1}
+        IF [ {2} == 7 ]
+            IF [ {3} == IS_HIGH ]
+                BPL .tmp
+            ELSE
+                BMI .tmp
+            ENDIF
+        ELSE
+            IF [ {3} == IS_HIGH ]
+                BVC .tmp
+            ELSE
+                BVS .tmp
+            ENDIF
+        ENDIF
     ENDIF
 _TO_PUSH_1 SET _STRUC_MAC_I
 _STRUC_MAC_I SET _STRUC_MAC_I + 1

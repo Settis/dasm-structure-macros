@@ -141,5 +141,17 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF BIT": {
+		"scope": "dasm",
+		"prefix": "IF_BIT",
+		"description": "Accum gets changed if you specify a bit other than 6 or 7.",
+		"body": [
+			"IF_BIT ${1:MEM_ADR}, ${2:BIN_NR}, ${3|IS_HIGH,IS_LOW|}",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }
