@@ -153,5 +153,16 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"IF MEMORY BYTE NEGATIVE": {
+		"scope": "dasm",
+		"prefix": "IF_MEM_BYTE_NEG",
+		"body": [
+			"IF_MEM_BYTE_NEG ${1:ADR}",
+			"\t$0",
+			"ELSE_",
+			"\t",
+			"END_IF"
+		]
 	}
 }
