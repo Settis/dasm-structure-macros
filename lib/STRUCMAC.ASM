@@ -213,3 +213,25 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
     IF_PLUS
     ENDM
  ;----------------
+
+
+;                        +--------------------------+
+;                        |      BEGIN...AGAIN       |
+;                        |      BEGIN...UNTIL       |
+;                        |  BEGIN...WHILE...REPEAT  |
+;                        +==========================+
+
+    MACRO BEGIN
+_STRUCT_MAC_LABEL_,_STRUC_MAC_I
+_TO_PUSH_1 SET _STRUC_MAC_I
+_STRUC_MAC_I SET _STRUC_MAC_I + 1
+    INCLUDE "STACKPUSH.ASM"
+    ENDM
+ ;----------------
+
+    MACRO AGAIN
+.tmp set _STRUCT_MAC_LABEL_,_STK_LVL_1
+    JMP .tmp
+    INCLUDE "STACKPOP.ASM"
+    ENDM
+ ;----------------

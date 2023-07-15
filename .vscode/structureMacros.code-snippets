@@ -175,5 +175,14 @@
 			"\t",
 			"END_IF"
 		]
+	},
+	"BEGIN ... AGAIN": {
+		"scope": "dasm",
+		"prefix": "AGAIN",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"AGAIN"
+		]
 	}
 }
