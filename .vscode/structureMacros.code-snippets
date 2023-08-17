@@ -228,5 +228,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_PLUS ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_PLUS",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_PLUS",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
