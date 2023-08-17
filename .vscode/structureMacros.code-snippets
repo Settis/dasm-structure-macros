@@ -217,5 +217,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_NOT_ZERO ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_NOT_ZERO",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_NOT_ZERO",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }

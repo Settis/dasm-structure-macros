@@ -258,3 +258,8 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     IF_EQ
     ENDM
  ;----------------
+
+    MACRO WHILE_NOT_ZERO
+    IF_NEQ
+    ENDM
+ ;----------------
