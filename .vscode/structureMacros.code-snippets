@@ -305,5 +305,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_V_CLR ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_V_CLR",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_V_CLR",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
