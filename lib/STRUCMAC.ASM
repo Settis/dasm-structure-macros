@@ -278,3 +278,8 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     IF_MINUS
     ENDM
  ;----------------
+
+    MACRO WHILE_C_CLR
+    IF_C_CLR
+    ENDM
+ ;----------------
