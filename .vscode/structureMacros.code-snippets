@@ -272,5 +272,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_C_SET ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_C_SET",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_C_SET",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
