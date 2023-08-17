@@ -239,5 +239,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_MINUS ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_MINUS",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_MINUS",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
