@@ -316,5 +316,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_V_SET ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_V_SET",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_V_SET",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
