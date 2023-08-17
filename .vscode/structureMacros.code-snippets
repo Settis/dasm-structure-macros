@@ -184,5 +184,16 @@
 			"\t$0",
 			"AGAIN"
 		]
+	},
+	"BEGIN ... WHILE_EQ ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_EQ",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_EQ",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
