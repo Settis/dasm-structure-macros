@@ -237,11 +237,7 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
  ;----------------
 
     MACRO WHILE_EQ
-.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
-    BNE .tmp
-_TO_PUSH_1 SET _STRUC_MAC_I
-_STRUC_MAC_I SET _STRUC_MAC_I + 1
-    INCLUDE "STACKPUSH.ASM"
+    IF_EQ
     ENDM
  ;----------------
 
@@ -250,5 +246,10 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
     JMP .tmp
 _STRUCT_MAC_LABEL_,_STK_LVL_1
     INCLUDE "STACKPOP2.ASM"
+    ENDM
+ ;----------------
+
+    MACRO WHILE_NEQ
+    IF_NEQ
     ENDM
  ;----------------
