@@ -250,5 +250,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_NEG ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_NEG",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_NEG",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
