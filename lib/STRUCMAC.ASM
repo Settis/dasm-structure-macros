@@ -288,3 +288,8 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     IF_C_SET
     ENDM
  ;----------------
+
+    MACRO WHILE_GE
+    IF_C_SET
+    ENDM
+ ;----------------

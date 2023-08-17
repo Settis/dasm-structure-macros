@@ -283,5 +283,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_GE ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_GE",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_GE",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
