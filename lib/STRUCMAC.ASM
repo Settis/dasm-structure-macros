@@ -308,3 +308,8 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     IF_V_SET
     ENDM
  ;----------------
+
+    MACRO WHILE_BIT
+    IF_BIT {1}, {2}, {3}
+    ENDM
+ ;----------------

@@ -327,5 +327,16 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... WHILE_BIT ... REPEAT_": {
+		"scope": "dasm",
+		"prefix": "WHILE_BIT",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"WHILE_BIT ${1:MEM_ADR}, ${2:BIN_NR}, ${3|IS_HIGH,IS_LOW|}",
+			"\t",
+			"REPEAT_"
+		]
 	}
 }
