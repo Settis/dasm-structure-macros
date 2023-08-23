@@ -392,5 +392,14 @@
 			"\t$0",
 			"UNTIL_MINUS"
 		]
+	},
+	"BEGIN ... UNTIL_NEG": {
+		"scope": "dasm",
+		"prefix": "UNTIL_NEG",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_NEG"
+		]
 	}
 }
