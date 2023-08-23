@@ -437,5 +437,14 @@
 			"\t$0",
 			"UNTIL_LT"
 		]
+	},
+	"BEGIN ... UNTIL_V_CLR": {
+		"scope": "dasm",
+		"prefix": "UNTIL_V_CLR",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_V_CLR"
+		]
 	}
 }
