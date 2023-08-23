@@ -410,5 +410,14 @@
 			"\t$0",
 			"UNTIL_C_CLR"
 		]
+	},
+	"BEGIN ... UNTIL_C_SET": {
+		"scope": "dasm",
+		"prefix": "UNTIL_C_SET",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_C_SET"
+		]
 	}
 }
