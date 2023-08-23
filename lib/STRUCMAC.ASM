@@ -394,3 +394,41 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     INCLUDE "STACKPOP.ASM"    
     ENDM
  ;----------------
+
+    MACRO UNTIL_BIT
+    IF [ {2} < 0 || {2} > 7 ]
+        ECHO "BIT_NR must be from 0 to 7"
+        ERR
+    ENDIF
+    IF ![ {3} == IS_HIGH || {3} == IS_LOW ]
+        ECHO "Condition must be: IS_HIGH or IS_LOW"
+        ERR
+    ENDIF
+.tmp set _STRUCT_MAC_LABEL_,_STK_LVL_1
+    IF [ {2} < 6 ]
+        LDA #[1 << {2}]
+        BIT {1}
+        IF [ {3} == IS_HIGH ]
+            BEQ .tmp
+        ELSE
+            BNE .tmp
+        ENDIF
+    ELSE
+        BIT {1}
+        IF [ {2} == 7 ]
+            IF [ {3} == IS_HIGH ]
+                BPL .tmp
+            ELSE
+                BMI .tmp
+            ENDIF
+        ELSE
+            IF [ {3} == IS_HIGH ]
+                BVC .tmp
+            ELSE
+                BVS .tmp
+            ENDIF
+        ENDIF
+    ENDIF
+    INCLUDE "STACKPOP.ASM"    
+    ENDM
+ ;----------------

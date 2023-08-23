@@ -455,5 +455,14 @@
 			"\t$0",
 			"UNTIL_V_SET"
 		]
+	},
+	"BEGIN ... UNTIL_BIT": {
+		"scope": "dasm",
+		"prefix": "UNTIL_BIT",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_BIT ${1:MEM_ADR}, ${2:BIN_NR}, ${3|IS_HIGH,IS_LOW|}"
+		]
 	}
 }
