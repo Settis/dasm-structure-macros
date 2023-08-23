@@ -347,5 +347,14 @@
 			"\t$0",
 			"UNTIL_EQ"
 		]
+	},
+	"BEGIN ... UNTIL_ZERO": {
+		"scope": "dasm",
+		"prefix": "UNTIL_ZERO",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_ZERO"
+		]
 	}
 }
