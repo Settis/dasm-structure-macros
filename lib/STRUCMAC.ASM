@@ -356,3 +356,10 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     UNTIL_MINUS
     ENDM
  ;----------------
+
+    MACRO UNTIL_C_CLR
+.tmp set _STRUCT_MAC_LABEL_,_STK_LVL_1
+    BCS .tmp
+    INCLUDE "STACKPOP.ASM"    
+    ENDM
+ ;----------------

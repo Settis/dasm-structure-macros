@@ -401,5 +401,14 @@
 			"\t$0",
 			"UNTIL_NEG"
 		]
+	},
+	"BEGIN ... UNTIL_C_CLR": {
+		"scope": "dasm",
+		"prefix": "UNTIL_C_CLR",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_C_CLR"
+		]
 	}
 }
