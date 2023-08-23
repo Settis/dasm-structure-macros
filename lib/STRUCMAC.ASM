@@ -337,3 +337,10 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     UNTIL_NEQ
     ENDM
  ;----------------
+
+    MACRO UNTIL_PLUS
+.tmp set _STRUCT_MAC_LABEL_,_STK_LVL_1
+    BMI .tmp
+    INCLUDE "STACKPOP.ASM"    
+    ENDM
+ ;----------------

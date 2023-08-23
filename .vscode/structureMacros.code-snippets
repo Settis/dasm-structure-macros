@@ -374,5 +374,14 @@
 			"\t$0",
 			"UNTIL_NOT_ZERO"
 		]
+	},
+	"BEGIN ... UNTIL_PLUS": {
+		"scope": "dasm",
+		"prefix": "UNTIL_PLUS",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_PLUS"
+		]
 	}
 }
