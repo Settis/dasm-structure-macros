@@ -338,5 +338,14 @@
 			"\t",
 			"REPEAT_"
 		]
+	},
+	"BEGIN ... UNTIL_EQ": {
+		"scope": "dasm",
+		"prefix": "UNTIL_EQ",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_EQ"
+		]
 	}
 }

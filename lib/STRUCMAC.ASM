@@ -313,3 +313,10 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     IF_BIT {1}, {2}, {3}
     ENDM
  ;----------------
+
+    MACRO UNTIL_EQ
+.tmp set _STRUCT_MAC_LABEL_,_STK_LVL_1
+    BNE .tmp
+    INCLUDE "STACKPOP.ASM"    
+    ENDM
+ ;----------------
