@@ -428,5 +428,14 @@
 			"\t$0",
 			"UNTIL_GE"
 		]
+	},
+	"BEGIN ... UNTIL_LT": {
+		"scope": "dasm",
+		"prefix": "UNTIL_LT",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_LT"
+		]
 	}
 }

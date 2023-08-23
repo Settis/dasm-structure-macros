@@ -375,3 +375,8 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     UNTIL_C_SET
     ENDM
  ;----------------
+
+    MACRO UNTIL_LT
+    UNTIL_C_CLR
+    ENDM
+ ;----------------
