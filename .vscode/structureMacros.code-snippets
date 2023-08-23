@@ -419,5 +419,14 @@
 			"\t$0",
 			"UNTIL_C_SET"
 		]
+	},
+	"BEGIN ... UNTIL_GE": {
+		"scope": "dasm",
+		"prefix": "UNTIL_GE",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_GE"
+		]
 	}
 }

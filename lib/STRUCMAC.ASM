@@ -370,3 +370,8 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     INCLUDE "STACKPOP.ASM"    
     ENDM
  ;----------------
+
+    MACRO UNTIL_GE
+    UNTIL_C_SET
+    ENDM
+ ;----------------
