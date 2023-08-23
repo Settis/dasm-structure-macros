@@ -325,3 +325,10 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     UNTIL_EQ
     ENDM
  ;----------------
+
+    MACRO UNTIL_NEQ
+.tmp set _STRUCT_MAC_LABEL_,_STK_LVL_1
+    BEQ .tmp
+    INCLUDE "STACKPOP.ASM"    
+    ENDM
+ ;----------------

@@ -356,5 +356,14 @@
 			"\t$0",
 			"UNTIL_ZERO"
 		]
+	},
+	"BEGIN ... UNTIL_NEQ": {
+		"scope": "dasm",
+		"prefix": "UNTIL_NEQ",
+		"body": [
+			"BEGIN",
+			"\t$0",
+			"UNTIL_NEQ"
+		]
 	}
 }
