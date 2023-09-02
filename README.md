@@ -2,6 +2,15 @@
 
 The original is here: https://wilsonminesco.com/StructureMacros/
 
+## Differences
+
+The original macros was written for Cross-32 assembly, but this varian is targeted to DASM.
+Because of DASM limitations and features macros implementation is different and here is a list of them:
+
+- in `begin while repeat` I use `REPEAT_`, because the `repeat` is a reserved word in DASM
+- in `case` there is no limitation of cases number, you can have as many, as you want
+- `case` macro can be nested
+
 ## The project structure
 
 The macros files are in "lib" folder.
