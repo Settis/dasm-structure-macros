@@ -10,6 +10,8 @@ Because of DASM limitations and features macros implementation is different and 
 - in `begin while repeat` I use `REPEAT_`, because the `repeat` is a reserved word in DASM
 - in `case` there is no limitation of cases number, you can have as many, as you want
 - `case` macro can be nested
+- `for ... next` macro can be nested
+- in `for ... next` macro there is no need to specify a variable at the end like `NEXT  var1`, just `NEXT` will be enough
 
 ## The project structure
 

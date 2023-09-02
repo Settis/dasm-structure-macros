@@ -475,5 +475,14 @@
 			"\tEND_OF",
 			"END_CASE"
 		]
+	},
+	"FOR ... NEXT": {
+		"scope": "dasm",
+		"prefix": "FOR",
+		"body": [
+			"FOR ${1:VAR_NAME}, ${2:INDEX}, UP_TO, ${3:LIMIT}",
+			"\t$0",
+			"NEXT"
+		]
 	}
 }

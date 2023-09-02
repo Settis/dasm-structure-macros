@@ -31,6 +31,7 @@ IS_LOW   = 4
 ACCUM    = $101
 X_REG    = $102
 Y_REG    = $103
+UP_TO    = 5
 
 ;                         +--------------------------+
 ;                         |  IF_xx...ELSE_...END_IF  |
@@ -481,5 +482,39 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
     MACRO END_CASE
 _STRUCT_MAC_LABEL_,_STK_LVL_2
     INCLUDE "STACKPOP2.ASM"
+    ENDM
+ ;----------------
+
+;                       +--------------------+
+;                       |     FOR...NEXT     |
+;                       +====================+
+
+    MACRO FOR
+    LDA #[ {2} & $FF ]
+    STA {1}
+    LDA #[ ({2} >> 8) & $FF ]
+    STA {1}+1
+_TO_PUSH_3 SET {1}
+_TO_PUSH_2 SET {4}
+_STRUCT_MAC_LABEL_,_STRUC_MAC_I
+_TO_PUSH_1 SET _STRUC_MAC_I
+_STRUC_MAC_I SET _STRUC_MAC_I + 1
+    INCLUDE "STKPUSH3.ASM"
+    ENDM
+ ;----------------
+
+    MACRO NEXT
+    INC _STK_LVL_3
+    BNE .check_condition
+    INC _STK_LVL_3+1
+.check_condition:
+.tmp set _STRUCT_MAC_LABEL_,_STK_LVL_1
+    LDA _STK_LVL_3
+    CMP #[ (_STK_LVL_2+1) & $FF ]
+    BNE .tmp
+    LDA _STK_LVL_3+1
+    CMP #[ ((_STK_LVL_2+1) >> 8) & $FF ]
+    BNE .tmp
+    INCLUDE "STACKPOP3.ASM"
     ENDM
  ;----------------
