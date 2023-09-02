@@ -28,6 +28,9 @@ IS_SET   = 1
 IS_CLEAR = 2
 IS_HIGH  = 3
 IS_LOW   = 4
+ACCUM    = $101
+X_REG    = $102
+Y_REG    = $103
 
 ;                         +--------------------------+
 ;                         |  IF_xx...ELSE_...END_IF  |
@@ -430,5 +433,53 @@ _STRUCT_MAC_LABEL_,_STK_LVL_1
         ENDIF
     ENDIF
     INCLUDE "STACKPOP.ASM"    
+    ENDM
+ ;----------------
+
+;                        +--------------------+
+;                        |   CASE statement   |
+;                        +====================+
+
+    MACRO CASE
+    IF ![ {1} == ACCUM || {1} == X_REG || {1} == Y_REG ]
+        ECHO "Register must be one of: ACCUM, X_REG or Y_REG"
+        ERR
+    ENDIF
+_TO_PUSH_1 SET {1}
+_TO_PUSH_2 SET _STRUC_MAC_I
+_STRUC_MAC_I SET _STRUC_MAC_I + 1
+    INCLUDE "STKPUSH2.ASM"
+    ENDM
+ ;----------------
+
+    MACRO CASE_OF
+    IF [ _STK_LVL_1 == ACCUM ]
+        CMP {1}
+    ENDIF
+    IF [ _STK_LVL_1 == X_REG ]
+        CPX {1}
+    ENDIF
+    IF [ _STK_LVL_1 == Y_REG ]
+        CPY {1}
+    ENDIF
+.tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
+    BNE .tmp
+_TO_PUSH_1 SET _STRUC_MAC_I
+_STRUC_MAC_I SET _STRUC_MAC_I + 1
+    INCLUDE "STACKPUSH.ASM"
+    ENDM
+ ;----------------
+
+    MACRO END_OF
+.case_end set _STRUCT_MAC_LABEL_,_STK_LVL_3
+    JMP .case_end
+_STRUCT_MAC_LABEL_,_STK_LVL_1
+    INCLUDE "STACKPOP.ASM"
+    ENDM
+ ;----------------
+
+    MACRO END_CASE
+_STRUCT_MAC_LABEL_,_STK_LVL_2
+    INCLUDE "STACKPOP2.ASM"
     ENDM
  ;----------------

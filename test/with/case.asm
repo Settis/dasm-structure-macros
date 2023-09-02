@@ -1,0 +1,23 @@
+    processor 6502
+    org $200
+    INCDIR "../../lib"
+    INCLUDE "STRUCMAC.ASM"
+
+LINEFEED_SUB = $1234
+CARRIAGE_RETURN_SUB = $4321
+BACKSPACE_SUB = $3333
+PRINT_CHAR_SUB = $2222
+
+    LDA $4567
+    CASE ACCUM
+        CASE_OF $0A
+            JSR LINEFEED_SUB
+        END_OF
+        CASE_OF $0D
+            JSR CARRIAGE_RETURN_SUB
+        END_OF
+        CASE_OF $08
+            JSR BACKSPACE_SUB
+        END_OF
+        JSR PRINT_CHAR_SUB
+    END_CASE

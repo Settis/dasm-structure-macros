@@ -464,5 +464,16 @@
 			"\t$0",
 			"UNTIL_BIT ${1:MEM_ADR}, ${2:BIN_NR}, ${3|IS_HIGH,IS_LOW|}"
 		]
+	},
+	"CASE ... END_CASE": {
+		"scope": "dasm",
+		"prefix": "CASE",
+		"body": [
+			"CASE ${1|ACCUM,X_REG,Y_REG|}",
+			"\tCASE_OF ${2:value}",
+			"\t\t$0",
+			"\tEND_OF",
+			"END_CASE"
+		]
 	}
 }
