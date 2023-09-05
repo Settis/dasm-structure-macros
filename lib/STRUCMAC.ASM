@@ -605,3 +605,86 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPOP3.ASM"
     ENDM
  ;----------------
+
+;                        +--------------------+
+;                        |   FOR_Y...NEXT_Y   |
+;                        +====================+
+
+    MACRO FOR_Y
+    IF [ !({1} == ACCUM || {1} == X_REG || {1} == Y_REG || {1} < $100) ]
+        ECHO "Index must be one of: ACCUM, X_REG, Y_REG of value below $100"
+        ERR
+    ENDIF
+    IF [ !({2} == UP_TO || {2} == DOWN_TO) ]
+        ECHO "Direction must be UP_TO or DOWN_TO"
+        ERR
+    ENDIF
+    IF [ {1} == ACCUM ]
+        TAY
+    ELSE
+        IF [ {1} == X_REG ]
+            PHA
+            TXA
+            TAY
+            PLA
+        ELSE
+            IF [ {1} != Y_REG ]
+                LDY #{1}
+            ENDIF
+        ENDIF
+    ENDIF
+_TO_PUSH_3 SET {3}
+_TO_PUSH_2 SET {2}
+_STRUCT_MAC_LABEL_,_STRUC_MAC_I
+_TO_PUSH_1 SET _STRUC_MAC_I
+_STRUC_MAC_I SET _STRUC_MAC_I + 1
+    INCLUDE "STKPUSH3.ASM"
+    ENDM
+ ;----------------
+
+    MACRO NEXT_Y
+.loop set _STRUCT_MAC_LABEL_,_STK_LVL_1
+    IF [ _STK_LVL_2 == DOWN_TO ]
+        DEY
+        IF [ _STK_LVL_3 == 0 ]
+            BNE .loop
+        ELSE
+            IF [ _STK_LVL_3 == $FF || _STK_LVL_3 == -1 || _STK_LVL_3 == NEG_NRs ]
+                BPL .loop
+            ELSE
+                IF [ _STK_LVL_3 == POS_NRs ]
+                    BMI .loop
+                ELSE
+                    IF [ _STK_LVL_3 > $102 ]
+                        CPY _STK_LVL_3
+                    ELSE
+                        CPY #_STK_LVL_3
+                    ENDIF
+                    BNE .loop
+                ENDIF
+            ENDIF
+        ENDIF 
+    ELSE ; UP_TO
+        INY
+        IF [ _STK_LVL_3 == 0 ]
+            BNE .loop
+        ELSE
+            IF [ _STK_LVL_3 == POS_NRs ]
+                BMI .loop
+            ELSE
+                IF [ _STK_LVL_3 == NEG_NRs ]
+                    BPL .loop
+                ELSE
+                    IF [ _STK_LVL_3 > $102 ]
+                        CPY _STK_LVL_3
+                    ELSE
+                        CPY #_STK_LVL_3
+                    ENDIF
+                    BNE .loop
+                ENDIF
+            ENDIF
+        ENDIF
+    ENDIF
+    INCLUDE "STACKPOP3.ASM"
+    ENDM
+ ;----------------
