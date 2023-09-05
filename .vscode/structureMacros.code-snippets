@@ -484,5 +484,14 @@
 			"\t$0",
 			"NEXT"
 		]
+	},
+	"FOR_X ... NEXT_X": {
+		"scope": "dasm",
+		"prefix": "FOR_X",
+		"body": [
+			"FOR_X ${1|ACCUM,X_REG,Y_REG|}, ${2|UP_TO,DOWN_TO|}, ${3|NEG_NRs,POS_NRs|}",
+			"\t$0",
+			"NEXT_X"
+		]
 	}
 }
