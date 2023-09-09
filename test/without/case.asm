@@ -8,19 +8,19 @@ PRINT_CHAR_SUB = $2222
 
     LDA $4567
 
-    CMP $0A
+    CMP #$0A
     BNE linefeed_case
     JSR LINEFEED_SUB
     JMP end_case
 linefeed_case:
 
-    CMP $0D
+    CMP #$0D
     BNE carriage_return_case
     JSR CARRIAGE_RETURN_SUB
     JMP end_case
 carriage_return_case:
 
-    CMP $08
+    CMP #$08
     BNE backspace_case
     JSR BACKSPACE_SUB
     JMP end_case

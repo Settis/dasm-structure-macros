@@ -459,13 +459,13 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
 
     MACRO CASE_OF
     IF [ _STK_LVL_1 == ACCUM ]
-        CMP {1}
+        CMP #{1}
     ENDIF
     IF [ _STK_LVL_1 == X_REG ]
-        CPX {1}
+        CPX #{1}
     ENDIF
     IF [ _STK_LVL_1 == Y_REG ]
-        CPY {1}
+        CPY #{1}
     ENDIF
 .tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
     BNE .tmp

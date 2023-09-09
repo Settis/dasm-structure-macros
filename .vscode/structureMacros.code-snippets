@@ -476,6 +476,15 @@
 			"END_CASE"
 		]
 	},
+	"CASE_OF ... END_OF": {
+		"scope": "dasm",
+		"prefix": "CASE_OF",
+		"body": [
+			"CASE_OF ${1:value}",
+			"\t$0",
+			"END_OF"
+		]
+	},
 	"FOR ... NEXT": {
 		"scope": "dasm",
 		"prefix": "FOR",
