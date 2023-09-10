@@ -50,11 +50,11 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
  ;----------------
 
     MACRO ELSE_
-_STRUC_MAC_I SET _STRUC_MAC_I + 1
 .tmp set _STRUCT_MAC_LABEL_,_STRUC_MAC_I
     JMP .tmp
 _STRUCT_MAC_LABEL_,_STK_LVL_1
 _STK_LVL_1 SET _STRUC_MAC_I
+_STRUC_MAC_I SET _STRUC_MAC_I + 1
     ENDM
  ;----------------
 
