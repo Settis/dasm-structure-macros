@@ -706,3 +706,10 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
 .tmp
     ENDM
  ;----------------
+
+    MACRO RTS_IF_PLUS
+    BMI .tmp
+    RTS
+.tmp
+    ENDM
+ ;----------------

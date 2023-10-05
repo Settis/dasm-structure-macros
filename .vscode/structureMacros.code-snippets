@@ -527,5 +527,13 @@
 			"RTS_IF_NE",
 			"$0"
 		]
+	},
+	"RTS IF PLUS": {
+		"scope": "dasm",
+		"prefix": "RTS_IF_PLUS",
+		"body": [
+			"RTS_IF_PLUS",
+			"$0"
+		]
 	}
 }
