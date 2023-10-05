@@ -535,5 +535,13 @@
 			"RTS_IF_PLUS",
 			"$0"
 		]
+	},
+	"RTS IF MINUS": {
+		"scope": "dasm",
+		"prefix": "RTS_IF_MINUS",
+		"body": [
+			"RTS_IF_MINUS",
+			"$0"
+		]
 	}
 }
