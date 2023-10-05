@@ -26,8 +26,8 @@ _STRUC_MAC_I SET 1
 ; Arguments
 IS_SET   = 1
 IS_CLEAR = 2
-IS_HIGH  = 3
-IS_LOW   = 4
+IS_HIGH  = 1
+IS_LOW   = 2
 UP_TO    = 5
 DOWN_TO  = 6
 
@@ -716,6 +716,22 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
 
     MACRO RTS_IF_MINUS
     BPL .tmp
+    RTS
+.tmp
+    ENDM
+ ;----------------
+
+    MACRO RTS_IF_FLAG_VAR
+    IF ![ {2} == IS_SET || {2} == IS_CLEAR ]
+        ECHO "Condition must be: IS_SET or IS_CLEAR"
+        ERR
+    ENDIF
+    BIT {1}
+    IF [ {2} == IS_SET ]
+        BPL .tmp
+    ELSE
+        BMI .tmp
+    ENDIF
     RTS
 .tmp
     ENDM

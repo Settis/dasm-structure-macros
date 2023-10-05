@@ -543,5 +543,13 @@
 			"RTS_IF_MINUS",
 			"$0"
 		]
+	},
+	"RTS IF FLAG VAR": {
+		"scope": "dasm",
+		"prefix": "RTS_IF_FLAG_VAR",
+		"body": [
+			"RTS_IF_FLAG_VAR ${1:FLAG}, ${2|IS_SET,IS_CLEAR|}",
+			"$0"
+		]
 	}
 }
