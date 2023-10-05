@@ -688,3 +688,13 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
     INCLUDE "STACKPOP3.ASM"
     ENDM
  ;----------------
+
+ ;                       +--------------------+
+ ;                       |     Accessories    |
+ ;                       +====================+
+
+    MACRO RTS_IF_EQ
+    BNE .tmp
+    RTS
+.tmp
+    ENDM

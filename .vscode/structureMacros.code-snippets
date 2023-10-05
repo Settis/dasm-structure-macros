@@ -511,5 +511,13 @@
 			"\t$0",
 			"NEXT_Y"
 		]
+	},
+	"RTS IF EQ": {
+		"scope": "dasm",
+		"prefix": "RTS_IF_EQ",
+		"body": [
+			"RTS_IF_EQ",
+			"$0"
+		]
 	}
 }
