@@ -698,3 +698,11 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
     RTS
 .tmp
     ENDM
+ ;----------------
+
+    MACRO RTS_IF_NE
+    BEQ .tmp
+    RTS
+.tmp
+    ENDM
+ ;----------------

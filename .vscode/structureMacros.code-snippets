@@ -519,5 +519,13 @@
 			"RTS_IF_EQ",
 			"$0"
 		]
+	},
+	"RTS IF NE": {
+		"scope": "dasm",
+		"prefix": "RTS_IF_NE",
+		"body": [
+			"RTS_IF_NE",
+			"$0"
+		]
 	}
 }
