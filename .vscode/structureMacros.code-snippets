@@ -559,5 +559,14 @@
 			"RTS_IF_BIT ${1:MEM_ADR}, ${2:BIN_NR}, ${3|IS_HIGH,IS_LOW|}",
 			"$0"
 		]
+	},
+	"RTS IF MEM LOC": {
+		"scope": "dasm",
+		"description": "Alters Y for IS_0 or IS_NON_0.",
+		"prefix": "RTS_IF_MEM_LOC",
+		"body": [
+			"RTS_IF_MEM_LOC ${1:ADR}, ${2|IS_POS,IS_NEG,IS_0,IS_NON_0|}",
+			"$0"
+		]
 	}
 }

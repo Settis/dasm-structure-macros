@@ -28,8 +28,12 @@ IS_SET   = 1
 IS_CLEAR = 2
 IS_HIGH  = 1
 IS_LOW   = 2
-UP_TO    = 5
-DOWN_TO  = 6
+UP_TO    = 3
+DOWN_TO  = 4
+IS_POS   = 5
+IS_NEG   = 6
+IS_0     = 7
+IS_NON_0 = 8
 
 NEG_NRs  = $101
 POS_NRs  = $102
@@ -769,6 +773,32 @@ _STRUC_MAC_I SET _STRUC_MAC_I + 1
                 BVS .tmp
             ENDIF
         ENDIF
+    ENDIF
+    RTS
+.tmp
+    ENDM
+ ;----------------
+
+    MACRO RTS_IF_MEM_LOC
+    IF ![ {2} == IS_POS || {2} == IS_NEG || {2} == IS_0 || {2} == IS_NON_0 ]
+        ECHO "Condition must be: IS_POS, IS_NEG, IS_0 or IS_NON_0"
+        ERR
+    ENDIF
+    IF [ {2} == IS_POS ]
+        BIT {1}
+        BMI .tmp
+    ENDIF
+    IF [ {2} == IS_NEG ]
+        BIT {1}
+        BPL .tmp
+    ENDIF
+    IF [ {2} == IS_0 ]
+        LDY {1}
+        BNE .tmp
+    ENDIF
+    IF [ {2} == IS_NON_0 ]
+        LDY {1}
+        BEQ .tmp
     ENDIF
     RTS
 .tmp
