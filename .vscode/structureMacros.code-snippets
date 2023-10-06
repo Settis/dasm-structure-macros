@@ -551,5 +551,13 @@
 			"RTS_IF_FLAG_VAR ${1:FLAG}, ${2|IS_SET,IS_CLEAR|}",
 			"$0"
 		]
+	},
+	"RTS IF BIT": {
+		"scope": "dasm",
+		"prefix": "RTS_IF_BIT",
+		"body": [
+			"RTS_IF_BIT ${1:MEM_ADR}, ${2:BIN_NR}, ${3|IS_HIGH,IS_LOW|}",
+			"$0"
+		]
 	}
 }
